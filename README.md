@@ -1,13 +1,19 @@
-# A simple Calculator
+# Simple Javascript Calculator
  A simple calculator using HTML, CSS &amp; Javascript
- ![title-pic](https://user-images.githubusercontent.com/39196039/40139639-27db8c64-596e-11e8-9537-04a5b5d07170.jpg)
- This is a simple calculator functionality achieved using Javascript. The logic is very simple with the minimum lines of code possible.
- 
-## Steps to execute this calculator:
-- Download the entire code 
-- Open up the index.html.
+ ![title-pic](https://iili.io/dYj0hB.png)
+ This is a simple calculator functionality achieved using Javascript. The logic is very simple (you can also try it 😅) with the less lines of code possible .
 
-## Technologies used: 
+### [Live Site](https://web-codegrammer-js-calculator.netlify.app)
+
+## Execution:
+- Download the entire repository.
+- Open up the index.html or Run LocalHost:3000 on VsCode.
+
+## Tech Stack used: 
 - HTML
-- CSS [style/Presentation]
-- Javascript [Logic/Working of calculator]
+- CSS [for style/Presentation]
+- Javascript [for Logic/Working of calculator]
+
+## License 
+[MIT](https://github.com/web-codegrammer/Netflix-landing-Page/blob/master/LICENSE)
+Issued to ```Devanshu Vashishtha``` | All Rights Reserved | 2020
