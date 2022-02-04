@@ -1,8 +1,8 @@
 function getHistory(){
-	return document.getElementById("history-value").innerText;
+	return document.getElementById("history-value").innerText.replace("÷","/").replace("×","*");
 }
 function printHistory(num){
-	document.getElementById("history-value").innerText=num;
+	document.getElementById("history-value").innerText = num;
 }
 function getOutput(){
 	return document.getElementById("output-value").innerText;
@@ -52,7 +52,7 @@ for(var i =0;i<operator.length;i++){
 				output= output==""?output:reverseNumberFormat(output);
 				history=history+output;
 				if(this.id=="="){
-					var result=eval(history);
+					var result= eval(history);
 					printOutput(result);
 					printHistory("");
 				}
