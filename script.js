@@ -1,80 +1,93 @@
-function getHistory() {
+// Function to get the history element
+function getHistoryElement() {
   return document.getElementById("history-value");
 }
+
+// Function to print history to the UI
 function printHistory(num) {
-  document.getElementById("history-value").innerText = num;
+  getHistoryElement().innerText = num;
 }
-function getOutput() {
+
+// Function to get the output element's text
+function getOutputText() {
   return document.getElementById("output-value").innerText;
 }
+
+// Function to print output to the UI
 function printOutput(num) {
   document.getElementById("output-value").innerText = num;
 }
-var lst = ["%", "/", "+", "-", "*"];
-var f = false;
-var operator = document.getElementsByClassName("number");
 
-for (var i = 0; i < operator.length; i++) {
-  operator[i].addEventListener("click", function () {
-    if (this.id == "clear") {
+// Array of valid operators
+const operators = ["%", "/", "+", "-", "*"];
+
+// Flag to track calculation state
+let calculationPerformed = false;
+
+// Get all elements with class "number"
+const numberButtons = document.getElementsByClassName("number");
+
+// Add event listeners to all number buttons
+for (let i = 0; i < numberButtons.length; i++) {
+  numberButtons[i].addEventListener("click", function () {
+    const buttonId = this.id;
+    let output = getOutputText();
+
+    // Handling clear button
+    if (buttonId === "clear") {
       printHistory("");
       printOutput("");
-    } else if (this.id == "backspace") {
-      var output = getOutput();
+    } 
+    // Handling backspace button
+    else if (buttonId === "backspace") {
       if (output) {
-        //if output has a value
         output = output.substring(0, output.length - 1);
-        //output = output;
         printOutput(output);
       }
-    } else if (this.id == "=") {
+    } 
+    // Handling equals button
+    else if (buttonId === "=") {
       try {
-        var output = getOutput();
-
-        if (output == "NaN" || output == "" || f) {
-          f = false;
+        if (output === "NaN" || output === "" || calculationPerformed) {
+          calculationPerformed = false;
           printOutput("");
           printHistory("");
         } else {
-          var outpu = eval(output);
-          // print(outpu);
-          if (outpu == undefined) {
-            outpu = "NaN";
+          let result = eval(output);
+          if (result === undefined) {
+            result = "NaN";
             output = "";
           }
-          f = true;
-          printOutput(outpu);
+          calculationPerformed = true;
+          printOutput(result);
           printHistory(output);
         }
       } catch (error) {
-        outpu = "NaN";
+        result = "NaN";
         output = "";
-        f = true;
-        printOutput(outpu);
+        calculationPerformed = true;
+        printOutput(result);
         printHistory(output);
       }
-    } else {
-      var output = getOutput().toString();
-      //console.log(lst[1] == this.id);
-      if (output.length == 0 && lst.includes(this.id)) {
+    } 
+    // Handling operator buttons and numbers
+    else {
+      if (output.length === 0 && operators.includes(buttonId)) {
         printOutput("");
         printHistory("");
-        f = false;
+        calculationPerformed = false;
       } else {
-        if (f || output == "NaN") {
-          if (!lst.includes(this.id)) {
-            output = this.id;
+        if (calculationPerformed || output === "NaN") {
+          if (!operators.includes(buttonId)) {
+            output = buttonId;
             printHistory("");
           } else {
-            output = output + this.id.toString();
+            output += buttonId;
           }
-          f = false;
+          calculationPerformed = false;
         } else {
-          if (output.length > 0) output = output + this.id.toString();
-          else output = this.id;
+          output += buttonId;
         }
-        console.log(output);
-
         printOutput(output);
       }
     }
