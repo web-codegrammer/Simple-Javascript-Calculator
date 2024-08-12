@@ -5,15 +5,11 @@ body {
 body::-webkit-scrollbar {
   display: none;
 }
-/* #container {
-  display: flex;
-  width: 100%;
-  height: fit-content;
-  padding: 20px;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
-
-  margin: 20px auto;
-} */
+#container {
+  display: grid;
+  gap: 30px;
+  background-image: linear-gradient(rgba(4, 0, 255, 0.3), rgba(255, 3, 87, 0.3));
+}
 #calculator {
   max-width: 320px;
   width: 340px;

@@ -10,7 +10,7 @@ function getOutput() {
 function printOutput(num) {
   document.getElementById("output-value").innerText = num;
 }
-var lst = ["%", "/", "+", "-", "*"];
+var lst = ["mod", "/", "+", "-", "*"];
 var f = false;
 var operator = document.getElementsByClassName("number");
 
@@ -36,7 +36,7 @@ for (var i = 0; i < operator.length; i++) {
           printOutput("");
           printHistory("");
         } else {
-          var outpu = eval(output);
+          var outpu = eval(output.replaceAll('mod', '%'));
           // print(outpu);
           if (outpu == undefined) {
             outpu = "NaN";
